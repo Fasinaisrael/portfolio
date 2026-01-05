@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Let Tailwind control colors */
+html {
+    background-color: black;
+}
+
+/* Typography polish */
+body {
+    font-family: var(--font-inter), system-ui, sans-serif;
+    color-scheme: dark;
+}
+
+/* Headings feel deliberate */
+h1,
+h2,
+h3,
+h4 {
+    letter-spacing: -0.02em;
+}
+
+/* Better paragraph rhythm */
+p {
+    line-height: 1.7;
+}
+
+/* Clean links */
+a {
+    text-decoration: none;
+}

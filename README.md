@@ -34,3 +34,23 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+# Fasina Israel — Senior Mobile & Frontend Engineer
+
+Production-grade portfolio built with Next.js (App Router), TypeScript, and Tailwind CSS.
+
+## Focus Areas
+- Fintech & regulated mobile applications
+- React Native (Bare & Expo)
+- iOS & Android release pipelines
+- Secure authentication & payments
+- Performance & stability
+
+## Tech Stack
+- Next.js 14
+- TypeScript
+- Tailwind CSS
+- Vercel
+
+## Live
+https://israel-fasina-portfolio.vercel.app

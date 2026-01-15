@@ -81,7 +81,7 @@ export default function HomePage() {
               variant="outlined"
               size="large"
               component={Link}
-              href="/projects"
+              href="/project"
               sx={{ px: 4, py: 1.6 }}
             >
               View Projects

@@ -1,7 +1,8 @@
 'use client';
 
 import React from 'react';
-import { Box, Container, Typography, Grid, Card, CardContent } from '@mui/material';
+import { Box, Container, Typography, Card, CardContent } from '@mui/material';
+import Grid from '@mui/material/GridLegacy';
 import { motion } from 'framer-motion';
 
 const skills = [
@@ -73,7 +74,7 @@ export default function SeniorDeveloperSkillsPage() {
                 {/* Cards */}
                 <Grid container spacing={4}>
                     {skills.map((skill, index) => (
-                        <Grid item xs={12} md={6} key={skill.title} >
+                        <Grid item xs={12} md={6} key={skill.title}>
                             <motion.div
                                 initial={{ opacity: 0, y: 30 }}
                                 whileInView={{ opacity: 1, y: 0 }}

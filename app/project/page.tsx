@@ -10,8 +10,8 @@ import {
     CardContent,
     Stack,
     Chip,
-    Grid,
 } from '@mui/material';
+import Grid from '@mui/material/GridLegacy';
 
 import { projects } from '@/data/project';
 

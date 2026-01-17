@@ -2,13 +2,8 @@
 
 import { experience } from '@/data/experience';
 import ExperienceCard from '@/components/shared/ExperienceCard';
-import {
-    Box,
-    Container,
-    Typography,
-    Grid,
-    Divider,
-} from '@mui/material';
+import { Box, Container, Typography, Divider } from '@mui/material';
+import Grid from '@mui/material/GridLegacy';
 
 export default function ExperiencePage() {
     return (

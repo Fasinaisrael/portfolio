@@ -7,12 +7,12 @@ import {
   Button,
   Stack,
   Container,
-  Grid,
   Typography,
   Card,
   CardContent,
   Chip,
 } from '@mui/material';
+import Grid from '@mui/material/GridLegacy';
 
 export default function HomePage() {
   return (

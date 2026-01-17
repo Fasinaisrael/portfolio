@@ -1,6 +1,7 @@
 'use client';
 
 import Image from 'next/image';
+import { motion } from 'framer-motion';
 import {
     Box,
     Container,
@@ -12,6 +13,10 @@ import {
     Grid,
 } from '@mui/material';
 
+import { projects } from '@/data/project';
+
+/* ---------- Page ---------- */
+
 export default function ProjectsPage() {
     return (
         <Box sx={{ position: 'relative', overflow: 'hidden', py: { xs: 8, md: 12 } }}>
@@ -20,8 +25,8 @@ export default function ProjectsPage() {
             <Box sx={blob('#a855f7', { bottom: -200, left: -200 })} />
 
             <Container maxWidth="lg">
-                {/* PAGE HEADER */}
-                <Box sx={{ maxWidth: 800, mb: 8 }}>
+                {/* Header */}
+                <Box sx={{ maxWidth: 820, mb: 10 }}>
                     <Typography
                         variant="h3"
                         sx={{ fontWeight: 800, letterSpacing: '-0.02em', mb: 2 }}
@@ -36,28 +41,19 @@ export default function ProjectsPage() {
                             lineHeight: 1.8,
                         }}
                     >
-                        Selected projects demonstrating full product ownership, security-first
-                        engineering, and real-world problem solving.
+                        Selected projects demonstrating full product ownership,
+                        security-first engineering, and real-world problem solving
+                        across fintech and consumer platforms.
                     </Typography>
                 </Box>
 
-                {/* PROJECT LIST */}
+                {/* Projects */}
                 <Grid container spacing={4}>
-                    <Grid item xs={12}>
-                        <ProjectCard
-                            title="FastCash"
-                            image=""
-                            description="A fintech mobile application built from scratch to help users manage income, savings, and investments."
-                            highlights={[
-                                'End-to-end solo development using React Native & Expo',
-                                'Secure onboarding with BVN verification and OTP flows',
-                                'Multi-step profile completion with payout account validation',
-                                'Income tracking, savings, and investment workflows',
-                                'Expo Prebuild for owner testing and OTA updates',
-                            ]}
-                            tags={['Fintech', 'React Native', 'Expo', 'Security']}
-                        />
-                    </Grid>
+                    {projects.map((project, index) => (
+                        <Grid item xs={12} key={project.title}>
+                            <ProjectCard {...project} index={index} />
+                        </Grid>
+                    ))}
                 </Grid>
             </Container>
         </Box>
@@ -68,71 +64,110 @@ export default function ProjectsPage() {
 
 function ProjectCard({
     title,
-    image,
     description,
     highlights,
     tags,
+    image,
+    index,
 }: {
     title: string;
-    image: string;
     description: string;
     highlights: string[];
     tags: string[];
+    image?: string;
+    index: number;
 }) {
     return (
-        <Card
-            sx={{
-                bgcolor: 'background.paper',
-                transition: '0.25s',
-                '&:hover': { transform: 'translateY(-6px)' },
+        <motion.div
+            initial={{ opacity: 0, y: 28 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{
+                duration: 0.45,
+                ease: 'easeOut',
+                delay: index * 0.05,
             }}
+            whileHover={{ scale: 1.015 }}
         >
-            <CardContent>
-                <Grid container spacing={4} alignItems="center">
-                    {/* IMAGE */}
-                    <Grid item xs={12} md={3}>
-                        <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-                            <Image
-                                src={image}
-                                alt={title}
-                                width={120}
-                                height={120}
-                                style={{ borderRadius: 12 }}
-                            />
-                        </Box>
+            <Card
+                sx={{
+                    bgcolor: 'background.paper',
+                    borderRadius: 3,
+                    transition: '0.25s',
+                }}
+            >
+                <CardContent sx={{ p: { xs: 3, md: 4 } }}>
+                    <Grid container spacing={4} alignItems="center">
+                        {/* Image */}
+                        <Grid item xs={12} md={3}>
+                            <Box
+                                sx={{
+                                    display: 'flex',
+                                    justifyContent: 'center',
+                                    alignItems: 'center',
+                                }}
+                            >
+                                {/* <Image
+                                    src={image || ''}
+                                    alt={title}
+                                    width={120}
+                                    height={120}
+                                    style={{
+                                        borderRadius: 14,
+                                        objectFit: 'cover',
+                                    }}
+                                /> */}
+                            </Box>
+                        </Grid>
+
+                        {/* Content */}
+                        <Grid item xs={12} md={9}>
+                            <Typography variant="h5" fontWeight={700}>
+                                {title}
+                            </Typography>
+
+                            <Typography
+                                sx={{
+                                    mt: 2,
+                                    color: 'text.secondary',
+                                    lineHeight: 1.7,
+                                    maxWidth: 720,
+                                }}
+                            >
+                                {description}
+                            </Typography>
+
+                            <Stack spacing={1.4} sx={{ mt: 3 }}>
+                                {highlights.map((item, idx) => (
+                                    <Typography key={idx} sx={{ color: 'grey.400' }}>
+                                        • {item}
+                                    </Typography>
+                                ))}
+                            </Stack>
+
+                            <Stack
+                                direction="row"
+                                spacing={1}
+                                sx={{ mt: 3, flexWrap: 'wrap' }}
+                            >
+                                {tags.map((tag) => (
+                                    <Chip
+                                        key={tag}
+                                        label={tag}
+                                        size="small"
+                                        sx={{ fontWeight: 500 }}
+                                    />
+                                ))}
+                            </Stack>
+                        </Grid>
                     </Grid>
-
-                    {/* CONTENT */}
-                    <Grid item xs={12} md={9}>
-                        <Typography variant="h5" fontWeight={700}>
-                            {title}
-                        </Typography>
-
-                        <Typography sx={{ mt: 2, color: 'text.secondary', lineHeight: 1.7 }}>
-                            {description}
-                        </Typography>
-
-                        <Stack spacing={1.5} sx={{ mt: 3 }}>
-                            {highlights.map((item, idx) => (
-                                <Typography key={idx} sx={{ color: 'grey.400' }}>
-                                    • {item}
-                                </Typography>
-                            ))}
-                        </Stack>
-
-                        <Stack direction="row" spacing={1} sx={{ mt: 3, flexWrap: 'wrap' }}>
-                            {tags.map((tag) => (
-                                <Chip key={tag} label={tag} size="small" />
-                            ))}
-                        </Stack>
-                    </Grid>
-                </Grid>
-            </CardContent>
-        </Card>
+                </CardContent>
+            </Card>
+        </motion.div>
     );
 }
 
-/* ---------- styles ---------- */
+/* ---------- Background Blob ---------- */
 
 const blob = (color: string, pos: any) => ({
     position: 'absolute',
